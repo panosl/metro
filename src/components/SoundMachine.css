@@ -1,0 +1,18 @@
+.mixer-controls {
+  display: none !important;
+}
+
+.mixer-hidden-message {
+  display: block;
+  display: none !important;
+}
+
+@media (min-width: 768px) {
+  .mixer-controls {
+    display: block;
+  }
+
+  .mixer-hidden-message {
+    display: none;
+  }
+}
