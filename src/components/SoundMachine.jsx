@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Tone from "tone";
 import { Container, Row, Col } from "reactstrap";
 import { Button } from "reactstrap";
+import "./SoundMachine.css";
 import { InitPreset } from "./PresetsLib";
 import Planner from "./Planner";
 import Tr from "./Locale";
@@ -324,35 +325,40 @@ class SoundMachine extends Component {
           </span>
           <span className="tempo-marking ml-2">{this.state.tempoMarking}</span>
         </div>
-        <div className="d-flex align-items-center">
-          <span className="mr-2">{Tr("Volume")}</span>
-          <AdvancedSlider
-            ref="volumeSlider"
-            min={0}
-            disableBtns={true}
-            btnStep={1}
-            max={100}
-            defaultValue={90}
-            onChange={(newVolume) => this.onVolumeChange(newVolume)}
-          />
-        </div>
-        <div className="d-flex align-items-center">
-          <span className="mr-2">{Tr("Reverb")}</span>
-          <AdvancedSlider
-            ref="reverbSlider"
-            min={0}
-            disableBtns={true}
-            btnStep={1}
-            max={100}
-            defaultValue={0}
-            onChange={(newVolume) => this.onReverbChange(newVolume)}
-          />
+        <div className="mixer-controls">
+          <div className="align-items-center">
+            <span className="mr-2">{Tr("Volume")}</span>
+            <AdvancedSlider
+              ref="volumeSlider"
+              min={0}
+              disableBtns={true}
+              btnStep={1}
+              max={100}
+              defaultValue={90}
+              onChange={(newVolume) => this.onVolumeChange(newVolume)}
+            />
+          </div>
+          <div className="align-items-center">
+            <span className="mr-2">{Tr("Reverb")}</span>
+            <AdvancedSlider
+              ref="reverbSlider"
+              min={0}
+              disableBtns={true}
+              btnStep={1}
+              max={100}
+              defaultValue={0}
+              onChange={(newVolume) => this.onReverbChange(newVolume)}
+            />
+          </div>
         </div>
         <Button onClick={this.toggleClockVisibility} color="light">
           <i
             className={`fas fa-${this.state.showClock ? "eye-slash" : "eye"}`}
           ></i>
         </Button>
+        <div className="mixer-hidden-message">
+          <small>{Tr("Volume and reverb controls are hidden on small screens")}</small>
+        </div>
       </>
     );
   }
